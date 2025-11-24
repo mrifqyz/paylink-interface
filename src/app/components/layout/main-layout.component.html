@@ -1,0 +1,32 @@
+<div class="flex h-screen bg-slate-100 font-sans">
+  <app-sidebar
+    [isCollapsed]="isDesktopSidebarCollapsed"
+    [isMobileOpen]="isMobileSidebarOpen"
+    (toggleSidebar)="toggleDesktopSidebar()"
+    (closeMobileSidebar)="toggleMobileSidebar()">
+  </app-sidebar>
+
+  <main class="flex-1 flex flex-col overflow-y-auto transition-all duration-300 ease-in-out"
+        [ngClass]="{ 'md:ml-60': !isDesktopSidebarCollapsed, 'md:ml-20': isDesktopSidebarCollapsed }">
+
+    <header class="md:hidden sticky top-0 bg-white shadow-md z-20">
+      <div class="flex items-center justify-between p-4 h-20">
+        <div class="flex-1">
+          <button (click)="toggleMobileSidebar()" class="text-gray-700 focus:outline-none">
+            <fa-icon [icon]="faBars" class="h-6 w-6"></fa-icon>
+          </button>
+        </div>
+        <div class="flex-1 flex justify-center">
+          <img src="assets/images/paylink.png" alt="PayLink Logo" class="h-8 w-auto">
+        </div>
+        <div class="flex-1"></div>
+      </div>
+    </header>
+
+    <router-outlet></router-outlet>
+
+    <footer class="text-center p-4 text-sm text-gray-500 mt-auto">
+      ©2025 mrifqyz All Rights Reserved.
+    </footer>
+  </main>
+</div>
